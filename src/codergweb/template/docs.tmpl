@@ -1,0 +1,28 @@
+{{define "inside"}}
+		<div id="body">
+			<div id="body-real">
+				<div class="main-file-name">{{.NowPageName}}：</div>
+				<div class="docs">
+					<script language="javascript">
+					$(document).ready(function(){
+						var text = $("#body #body-real .markdown").text();
+						var converter = new Markdown.Converter();
+						var html = converter.makeHtml(text);
+						$("#body #body-real .markdown").html(html);
+					});
+					</script>
+					<div class="markdown">{{.NowDoc}}</div>
+					{{if .IfMain}}<p>&nbsp;</p>
+					<ul class="docsmenu">
+						{{with .Menu}}
+						{{range .}}
+							<li><a href="/Docs/{{.Mark}}">{{.Name}}</a></li>
+						{{end}}
+						{{end}}
+					</ul>{{end}}
+					<p>&nbsp;</p><p>&nbsp;</p>
+					<a href="/Docs">目录</a>{{if .IfPrev}}&nbsp;&nbsp;上一篇：<a href="/Docs/{{.PrevMark}}">{{.PrevName}}</a>{{end}}{{if .IfNext}}&nbsp;&nbsp;下一篇：<a href="/Docs/{{.NextMark}}">{{.NextName}}</a>{{end}}
+				</div>
+			</div>
+		</div>
+{{end}}

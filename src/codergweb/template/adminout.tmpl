@@ -1,0 +1,40 @@
+{{define "adminout"}}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" href="/img/logo-32.png" sizes="32x32"/>
+		<link rel="icon" href="/img/logo-64.png" sizes="64x64"/>
+		<link rel="icon" href="/img/logo-128.png" sizes="128x128"/>
+		<link href="/css/reset.css" rel="stylesheet" type="text/css" />
+		{{range .Main.PageCss}}<link href="/css/{{.}}" rel="stylesheet" type="text/css" />{{end}}
+		{{range .Main.PageJs}}<script src="/js/{{.}}"></script>{{end}}
+		<title>管理界面：{{.NowPageName}} - {{.Main.WebSiteName}}</title>
+	</head>
+	<body>
+		<!-- Header Begin -->
+		<div id="header">
+			<div id="header-real">
+				<div class="level1">--- Go语言 - HTTP[s] - Web & B/S - 框架 ---</div>
+				<div class="level2">
+					<div class="logo"></div>
+				</div>
+				<div class="level3">用户：{{.Main.AdminName}}&nbsp;&nbsp;[<a href="/Admin/logout">退出</a>]</div>
+			</div>
+		</div>
+		<!-- Header End -->
+		<!-- Body Begin -->
+		{{template "inside" .}}
+		<!-- Body End -->
+		<!-- Footer Begin -->
+		<div id="footer">
+			<div class="footer-top"></div>
+			<div id="footer-real">
+				<p><a href="http://www.ydmsh.com" target="_blank">忆黛蒙逝·建造源</a>&nbsp;&nbsp;<i>原创自己的生活</i></p>
+				<p>Powered by CoderG and <a href="https://getfedora.org" target="_blank">Fedora</a>, <a href="http://www.gimp.org" target="_blank">GIMP</a>, <a href="https://inkscape.org" target="_blank">Inkscape</a>, <a href="http://www.postgresql.org" target="_blank">PostgreSQL</a>, <a href="http://cubieboard.org" target="_blank">CubieBoard</a> ...</p>
+			</div>
+		</div>
+		<!-- Footer End -->
+	</body>
+</html>
+{{end}}

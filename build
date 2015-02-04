@@ -1,0 +1,17 @@
+#!/bin/bash
+
+CURDIR=`pwd`
+OLDGOPATH="$GOPATH"
+export GOPATH="$OLDGOPATH":"$CURDIR"
+
+go install codergweb
+
+cp -r src/codergweb/codergweb.cfg bin/
+cp -r src/codergweb/template bin/
+cp -r src/codergweb/nodetree bin/
+cp -r src/codergweb/static bin/
+cp -r doc bin/
+
+bin/codergweb
+
+export GOPATH="$OLDGOPATH"

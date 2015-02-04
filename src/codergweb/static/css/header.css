@@ -1,0 +1,91 @@
+html, body{
+	font-family:"文泉驿等宽微米黑", "WenQuanYi Micro Hei Mono", "微软雅黑", "Microsoft YaHei", "华文黑体", "STHeiti", "Source Han Sans Normal" , "黑体", Simhei;
+	background-color:#222;
+}
+#header{
+	height:189px;
+	background:url(../img/header-001.png);
+}
+#header-real{
+	width:1000px;
+	margin:0 auto;
+	height:189px;
+}
+#header-real .level1{
+	height:26px;
+	padding-right:10px;
+	line-height: 26px;
+	color: #828282;
+	text-align: right;
+	font-size:14px;
+}
+#header-real .level2{
+	height:135px;
+	width:1000px;
+	position: relative;
+}
+#header-real .level2 .logo{
+	background: url(../img/header-002.png);
+	width:269px;
+	height:111px;
+	position: absolute;
+	left:0;
+	top:12px;
+}
+#header-real .level2 .navi{
+	position: absolute;
+	height:30px;
+	bottom:0px;
+	right:0px;
+	line-height:30px;
+	font-size:14px;
+	/*color:#b5ff54;*/
+	/*color:#ff6464;*/
+	color:#fffc06;
+	/*color:#ff6b31;*/
+	padding-right:10px;
+	text-align: right;
+}
+#header-real .level2 .navi a{
+	color:#e2e2e2;
+	text-decoration: none;
+}
+#header-real .level3{
+	height:28px;
+	padding-right:10px;
+	line-height: 28px;
+	color: #225500;
+	text-align: right;
+	font-size:14px;
+}
+#header-real .level3 a {
+	color: #225500;
+	text-decoration: none;
+}
+
+
+#footer{
+	background-color:#fff;
+	margin-bottom: 10px;
+}
+#footer .footer-top{
+	height:5px;
+	background:url(../img/footer-001.png);
+}
+#footer-real{
+	margin:0 auto;
+	width:1000px;
+	padding:15px 0 15px 0;
+	font-size:14px;
+	color: #828282;
+	line-height: 175%;
+}
+#footer-real a{
+	color: #828282;
+	text-decoration: none;
+}
+
+
+#body{
+	background-color: #efefef;
+}

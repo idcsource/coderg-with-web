@@ -1,0 +1,60 @@
+{{define "inside"}}
+		<div id="body">
+			<script language="javascript">
+					$(document).ready(function(){ 
+						$('.allask .date').each(function(i){
+							var $theTime = $(this).text();
+							$theTime = $theTime * 1000;
+							var $date= new Date($theTime);
+							$theTime = $date.formatDate("yyyy年MM月dd日");
+							$(this).text($theTime);
+						});
+						
+						$('.allask .submit input[name=addanswer]').click(function(){
+							var id = $(this).attr("aid");
+							var answer = $(this).closest(".oneask").find("textarea[name=answer]").val();
+							$.post( "{{.RealNode}}/admin-ad",{types: 1, id : id, answer : answer}).done(function(data){
+								if (data == "ok") {
+									alert("修改成功");
+								}else{
+									alert(data);
+								}
+							});
+						});
+						
+						$('.allask .submit input[name=delquestion]').click(function(){
+							if(window.confirm('确认删除？')){
+								var id = $(this).attr("aid");
+								$.post( "{{.RealNode}}/admin-ad",{types: 2, id : id}).done(function(data){
+								if (data == "ok") {
+									document.location.reload();
+								}else{
+									alert(data);
+								}
+							});
+							}else{
+								return;
+							}
+						});
+					});
+			</script>
+			<div id="body-real">
+				<div class="allask">
+					{{with .AskAnswer}}{{range .}}
+					<div class="oneask" aid="{{.Id}}">
+						<div class="question"><span class="title">问题：</span>{{.Title}}</div>
+						<div class="question"><span class="title">日期：</span><span class="date">{{.Date}}</span></div>
+						<div class="title">详情：</div>
+						<div class="content">{{.Content}}</div>
+						<div class="title">回答：</div>
+						<div class="content"><textarea name="answer">{{.Answer}}</textarea></div>
+						<div class="submit"><input aid="{{.Id}}" name="delquestion" type="button" value="删除问题">&nbsp;&nbsp;<input aid="{{.Id}}" name="addanswer" type="button" value="提交回答"></div>
+					</div>
+					{{end}}{{end}}
+					<div class="pages">
+						{{if .IfPrev}}<a href="{{.RealNode}}/admin/{{.PrevPage}}">上一页</a>{{end}}{{if .IfNext}}<a href="{{.RealNode}}/admin/{{.NextPage}}">下一页</a>{{end}}
+					</div>
+				</div>
+			</div>
+		</div>
+{{end}}

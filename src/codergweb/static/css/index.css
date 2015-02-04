@@ -1,0 +1,108 @@
+#body-real{
+	width:980px;
+	margin:0 auto;
+	padding:10px;
+}
+#body-real .main-file-name{
+	color:#1f4300;
+	font-size:18px;
+	line-height:25px;
+}
+#body-real .main-go{
+	border: 1px solid #757575;
+	background-color: #fff;
+	padding:20px;
+	margin:10px 0 10px 0;
+	line-height:175%;
+}
+#body-real .main-go .red{
+	color: #ff0000;
+}
+#body-real .main-go red{
+	color: #ff0000;
+}
+#body-real .list{
+	padding:20px;
+	text-align:center;
+	font-size:18px;
+	color:#1f4300;
+}
+#body-real .why-ip{
+	border: 1px solid #757575;
+	background-color: #fff;
+	padding:20px;
+	margin:10px 0 10px 0;
+	line-height:200%;
+	text-indent:2em;
+	font-size:14px;
+}
+#body-real .why-ip a{
+	color:#1f4300;
+	text-decoration: none;
+}
+
+
+#body-real .docs{
+	border: 1px solid #757575;
+	background-color: #fff;
+	padding:20px;
+	margin:10px 0 10px 0;
+	line-height:200%;
+	text-indent:2em;
+	font-size:14px;
+}
+#body-real .docs a{
+	color:#1f4300;
+	text-decoration: none;
+}
+
+#body-real .markdown h1{
+	padding:0;
+	padding-bottom:20px;
+	color:#1f4300;
+	font-size: 22px;
+	text-indent:0;
+}
+#body-real .markdown code{
+	text-indent:0;
+}
+#body-real .markdown pre {
+    margin: 5px 30px 5px 30px;
+	background-color: #efefef;
+    padding: 10px;
+    color: #111;
+    overflow: auto;
+    text-indent:0;
+    border: 1px solid #ccc;
+}
+#body-real .docsmenu{
+	padding:10px;
+	margin:0 80px 0 80px;
+	background-color: #efefef;
+	border: 1px solid #ccc;
+}
+#body-real .docsmenu li{
+	line-height: 40px;
+	height:40px;
+}
+
+
+#body-real .contentmain{
+	border: 1px solid #757575;
+	background-color: #fff;
+	padding:20px;
+	margin:10px 0 10px 0;
+	line-height:200%;
+	text-indent:2em;
+	font-size:14px;
+}
+#body-real .contentmain a{
+	color:#1f4300;
+	text-decoration: none;
+}
+
+#body-real .contentmain .login input{
+	background-color:#fff;
+	border: 1px solid #ccc;
+	padding:5px;
+}

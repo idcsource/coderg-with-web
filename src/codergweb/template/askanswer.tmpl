@@ -1,0 +1,76 @@
+{{define "inside"}}
+		<div id="body">
+			<script language="javascript">
+					$(document).ready(function(){ 
+						$('.allask .date').each(function(i){
+							var $theTime = $(this).text();
+							$theTime = $theTime * 1000;
+							var $date= new Date($theTime);
+							$theTime = $date.formatDate("yyyy年MM月dd日");
+							$(this).text($theTime);
+						});
+						
+						$('#ask .question input').keyup(function(){ $.RequestProcess.Text('#ask .question',0,5,50); });
+						$('#ask .email input').keyup(function(){ $.RequestProcess.Mail('#ask .email',1); });
+						$('#ask .content textarea').keyup(function(){ $.RequestProcess.Textarea('#ask .content',0,5,2000); });
+						var ckArray = [0,1,0];
+						$('#ask .submit input').click(function(){
+							ckArray[0] = $.RequestProcess.Text('#ask .question',0,5,50);
+							ckArray[1] = $.RequestProcess.Mail('#ask .email',1);
+							ckArray[2] = $.RequestProcess.Textarea('#ask .content',0,5,2000);
+							if($.RequestProcess.ckAllOne(ckArray)==0){
+								alert("输入错误"); 
+								return;
+							};
+							var question = $('#ask input[name=question]').val();
+							var email = $('#ask input[name=email]').val();
+							var content = $('#ask .content textarea').val();
+							$.post( "{{.RealNode}}/add",{question: question, email: email, content: content}).done(function(data){
+								if (data == "ok") {
+									window.location.href= "{{.RealNode}}";
+								}else{
+									alert(data);
+								}
+							});
+						});
+					});
+			</script>
+			<div id="body-real">
+				<div class="askone">提出一个疑问：</div>
+				<div class="askbox">
+					<form id='ask' name='ask' method='post' action=''>
+						<div class="floatleft">
+						<div class='title'>问题</div>
+						<div class='question'><input name='question' type='text' value=''> <span class='input_wrong_suggest'></span></div>
+						</div>
+						<div class="floatleft">
+						<div class='title'>邮箱</div>
+						<div class='email'><input name='email' type='text' value=''> <span class='input_wrong_suggest'></span></div>
+						</div>
+						<div class="clean"></div>
+						<div>&nbsp;</div>
+						<div class='title'>详述</div>
+						<div class='content'><textarea name='content'></textarea><br> <span class='input_wrong_suggest'></span></div>
+						<div>&nbsp;</div>
+						<div class="submit"><input name="submit" type="button" value="提交提问"></div>
+					</form>
+				</div>
+				<div class="allask">
+					{{with .AskAnswer}}{{range .}}
+					<div class="oneask">
+						<div class="question"><span class="title">问题：</span>{{.Title}}</div>
+						<div class="question"><span class="title">日期：</span><span class="date">{{.Date}}</span></div>
+						<div class="title">详情：</div>
+						<div class="content">{{.Content}}</div>
+						{{if .IfAnswer}}
+						<div class="title">回答：</div>
+						<div class="content">{{.Answer}}</div>{{end}}
+					</div>
+					{{end}}{{end}}
+					<div class="pages">
+						{{if .IfPrev}}<a href="{{.RealNode}}/{{.PrevPage}}">上一页</a>{{end}}{{if .IfNext}}<a href="{{.RealNode}}/{{.NextPage}}">下一页</a>{{end}}
+					</div>
+				</div>
+			</div>
+		</div>
+{{end}}

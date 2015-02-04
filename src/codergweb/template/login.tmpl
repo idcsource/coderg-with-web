@@ -1,0 +1,36 @@
+{{define "inside"}}
+		<div id="body">
+			<div id="body-real">
+				<div class="main-file-name">登录：</div>
+				<div class="contentmain">
+					<script language="javascript">
+					var dologin = function(){
+						var name = $(".login input[name='username']").val();
+						var pass = $(".login input[name='password']").val();
+						var d = new Date();
+						var ran = $.phpjs.sha1(d.getTime());
+						pass = $.phpjs.sha1(pass);
+						pass = ran + pass;
+						pass = $.phpjs.sha1(pass);
+						$.post( "{{.RealNode}}/logindo",{username:name, password:pass, check: ran}).done(function(data){
+							if (data == "ok") {
+								window.location.href= "{{.RealNode}}";
+							}else{
+								alert(data);
+							}
+						});
+					};
+					$(document).ready(function(){
+						$(".login input[name='login']").click(function(){
+							dologin();
+						});
+						$(".login input").keyup(function(k){
+							  if(k.keyCode == 13){ dologin(); };
+						});
+					});
+					</script>
+					<div class="login">用户名：<input type="text" name="username">&nbsp;&nbsp;&nbsp;密码：<input type="password" name="password">&nbsp;&nbsp;&nbsp;<input type="button" name="login" value="登录"></div>
+				</div>
+			</div>
+		</div>
+{{end}}
